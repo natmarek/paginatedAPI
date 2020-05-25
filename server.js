@@ -1,5 +1,9 @@
 const express = require('express')
 const app = express()
+const mongoose = require('mongoose')
+const User = require('./users')
+
+mongoose.connect('mongodb://localhost/pagination')
 
 const users = [
     {id:1, name: 'User 1'},
@@ -32,9 +36,9 @@ const posts = [
 ]
 
 
-app.get('/posts', paginatedResults(posts), (req, res) => {
-    res.json(res.paginatedResults)
-})
+// app.get('/posts', paginatedResults(posts), (req, res) => {
+//     res.json(res.paginatedResults)
+// })
 
 
 app.get('/users', paginatedResults(users),(req, res) => {
